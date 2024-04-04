@@ -136,6 +136,25 @@ export default function HeroHeader() {
           Join Waitlist
         </Link>
       </div>
+      <div className="mt-6 flex flex-1 flex-col items-center gap-4 text-center lg:gap-8">
+        <div className="flex flex-col items-center justify-center gap-y-4 space-y-4">
+          <div className="max-w-[80%] text-4xl font-bold lg:text-5xl lg:leading-snug">
+            Keep your landing page up forever without monthly hosting fees.
+          </div>
+          <h2 className="max-w-[80%] text-sm font-light text-muted-foreground lg:text-2xl">
+            We archive your landing page so you can share your work for the rest
+            of Internet history. It's like a Wayback Machine for your passion
+            project.
+          </h2>
+        </div>
+        <Link
+          href="https://github.com/redpangilinan/next-shadcn-landing"
+          target="_blank"
+          className={`w-[10rem] ${cn(buttonVariants({ size: "lg" }))}`}
+        >
+          Join Waitlist
+        </Link>
+      </div>
       {heroHeader.image !== "" ? (
         <div className="flex flex-1 justify-center lg:justify-end">
           <Image

@@ -142,9 +142,9 @@ export default function HeroHeader() {
             Keep your landing page up forever without monthly hosting fees.
           </div>
           <h2 className="max-w-[80%] text-sm font-light text-muted-foreground lg:text-2xl">
-            We archive your landing page so you can share your work for the rest
+            {`We archive your landing page so you can share your work for the rest
             of Internet history. It's like a Wayback Machine for your passion
-            project.
+            project.`}
           </h2>
         </div>
         <Link

@@ -15,7 +15,7 @@ export default function HeroHeader() {
           </div>
           <h2 className="max-w-[80%] text-sm font-light text-muted-foreground lg:text-2xl">
             Our archiver turns your side project into an immortal portfolio
-            highlight
+            highlight.
           </h2>
         </div>
         <Link

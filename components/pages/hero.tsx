@@ -47,6 +47,25 @@ export default function HeroHeader() {
       <div className="mt-6 flex flex-1 flex-col items-center gap-4 text-center lg:gap-8">
         <div className="flex flex-col items-center justify-center gap-y-4 space-y-4">
           <div className="max-w-[80%] text-4xl font-bold lg:text-5xl lg:leading-snug">
+            Give your passion project the memorial it deserves.
+          </div>
+          <h2 className="max-w-[70%] text-sm font-light text-muted-foreground lg:text-2xl">
+            Stop paying monthly fees to host old projects. We archive your
+            landing page so you can share your work for the rest of Internet
+            history.
+          </h2>
+        </div>
+        <Link
+          href="https://github.com/redpangilinan/next-shadcn-landing"
+          target="_blank"
+          className={`w-[10rem] ${cn(buttonVariants({ size: "lg" }))}`}
+        >
+          Join Waitlist
+        </Link>
+      </div>
+      <div className="mt-6 flex flex-1 flex-col items-center gap-4 text-center lg:gap-8">
+        <div className="flex flex-col items-center justify-center gap-y-4 space-y-4">
+          <div className="max-w-[80%] text-4xl font-bold lg:text-5xl lg:leading-snug">
             Your landing page, preserved forever.
           </div>
           <h2 className="max-w-[60%] text-sm font-light text-muted-foreground lg:text-2xl">
@@ -85,9 +104,28 @@ export default function HeroHeader() {
           <div className="max-w-[80%] text-4xl font-bold lg:text-5xl lg:leading-snug">
             Pay once, keep any landing page forever.
           </div>
-          <h2 className="max-w-[60%] text-sm font-light text-muted-foreground lg:text-2xl">
+          <h2 className="max-w-[80%] text-sm font-light text-muted-foreground lg:text-2xl">
             Stop paying monthly fees to host old projects. We turn your side
             project into an immortal portfolio highlight
+          </h2>
+        </div>
+        <Link
+          href="https://github.com/redpangilinan/next-shadcn-landing"
+          target="_blank"
+          className={`w-[10rem] ${cn(buttonVariants({ size: "lg" }))}`}
+        >
+          Join Waitlist
+        </Link>
+      </div>
+      <div className="mt-6 flex flex-1 flex-col items-center gap-4 text-center lg:gap-8">
+        <div className="flex flex-col items-center justify-center gap-y-4 space-y-4">
+          <div className="max-w-[80%] text-4xl font-bold lg:text-5xl lg:leading-snug">
+            Your landing page, preserved forever. Stop paying to host old
+            projects.
+          </div>
+          <h2 className="max-w-[70%] text-sm font-light text-muted-foreground lg:text-2xl">
+            We archive your landing page so you can share your work for the rest
+            of Internet history. Pay once, share forever.
           </h2>
         </div>
         <Link

@@ -63,25 +63,23 @@ interface RootLayoutProps {
 }
 
 export default function RootLayout({ children }: RootLayoutProps) {
-  return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${inter.className} flex min-h-screen flex-col bg-background text-primary`}
-      >
-        {settings.themeToggleEnabled ? (
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <Navbar />
-            {children}
-            <Footer />
-          </ThemeProvider>
-        ) : (
-          <ThemeProvider attribute="class" forcedTheme="light" enableSystem>
-            <Navbar />
-            {children}
-            <Footer />
-          </ThemeProvider>
-        )}
-      </body>
-    </html>
-  )
+  return <html lang="en" suppressHydrationWarning>
+    <body
+      className={`${inter.className} flex min-h-screen flex-col bg-background text-primary`}
+    >
+      {settings.themeToggleEnabled ? (
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Navbar />
+          {children}
+          <Footer />
+        </ThemeProvider>
+      ) : (
+        <ThemeProvider attribute="class" forcedTheme="light" enableSystem>
+          <Navbar />
+          {children}
+          <Footer />
+        </ThemeProvider>
+      )}
+    </body>
+  </html>
 }

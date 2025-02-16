@@ -1,0 +1,9 @@
+---
+description: Rules for how style should be applied
+globs: *
+---
+Style should be always using the following:
+
+- Good structure
+- Tailwind
+- Avoid grouping classes

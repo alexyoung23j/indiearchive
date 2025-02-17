@@ -6,8 +6,6 @@ import { Icons } from "@/components/icons"
 
 
 
-
-
 export default function FeatureCards() {
   return (
     <section style={{ backgroundColor: '#f8fafc' }}>

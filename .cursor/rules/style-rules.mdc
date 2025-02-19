@@ -1,6 +1,6 @@
 ---
 description: Rules for how style should be applied
-globs: *
+globs: 
 ---
 Style should be always using the following:
 

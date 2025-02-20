@@ -13,3 +13,9 @@ globs: "src/**/*.tsx", "src/**/*.ts"
 - Use local state for UI-only state
 - Use context for theme/auth/global UI state
 - Use Redux for complex server state
+
+
+## Layout Patterns
+- Use Flexbox for layouts instead of CSS Grid
+- Flexbox provides better flexibility and consistency across components
+- Grid layouts should be refactored to use Flexbox-based approaches

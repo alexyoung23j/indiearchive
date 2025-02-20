@@ -1,0 +1,16 @@
+---
+description: Guidelines for color usage in the application
+globs: ['**/*.tsx', '**/*.ts', '**/*.css']
+---
+
+---
+description: Guidelines for color usage in the application
+globs: ["**/*.tsx", "**/*.ts", "**/*.css"]
+---
+# Color Usage Guidelines
+
+## Custom Colors
+- Always use custom colors defined in colors.tsx instead of basic color values
+- Avoid using raw color values (like '#f8fafc' or 'white') directly in components
+- Import and reference color tokens from the colors.tsx file
+- This ensures consistent theming and easier maintenance across the application

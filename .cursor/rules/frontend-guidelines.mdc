@@ -30,3 +30,17 @@ globs: "src/**/*.tsx", "src/**/*.ts"
 - Use Flexbox for layout instead of CSS Grid
 - Flexbox provides better browser compatibility and simpler responsive layouts
 - Use flex properties (flex-direction, justify-content, align-items) for component positioning
+
+
+## Styling Guidelines
+- Always use Tailwind CSS classes for styling
+- Avoid using inline styles or style objects
+- Prefer utility classes over custom CSS
+- Use the className prop instead of style prop for all styling needs
+
+
+## Styling
+- Always use Tailwind CSS classes for styling
+- Avoid using inline styles with the style prop
+- Use Tailwind's utility classes for colors, spacing, and layout
+- For dark mode support, use Tailwind's dark: variant

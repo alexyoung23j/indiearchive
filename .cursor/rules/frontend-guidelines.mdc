@@ -4,6 +4,7 @@ globs: "src/**/*.tsx", "src/**/*.ts"
 ---
 # Frontend Development Guidelines
 
+
 ## Component Structure
 - All components must be functional components using hooks
 - Class components are deprecated and should be migrated

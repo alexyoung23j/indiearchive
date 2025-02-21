@@ -1,0 +1,11 @@
+---
+description: Standards for writing and organizing tests
+glob: "**/test_*.py", "**/tests/*.py", "**/*_test.py"
+---
+
+# Testing Standards
+
+## Testing Framework
+- Use pytest as the standard testing framework for all test files
+- Do not use alternative testing frameworks or unittest
+- Follow pytest conventions and best practices for test organization and assertions

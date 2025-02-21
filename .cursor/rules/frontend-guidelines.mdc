@@ -21,6 +21,11 @@ globs: "src/**/*.tsx", "src/**/*.ts"
 - Avoid importing icons from local components/icons directory
 
 
+## Icon Usage
+- Always import icons from the AlexIcons package in feature files
+- Avoid importing icons from local components/icons directory
+
+
 ## Layout Patterns
 - Use Flexbox for layout instead of CSS Grid
 - Flexbox provides better browser compatibility and simpler responsive layouts

@@ -14,3 +14,9 @@ globs: "src/**/*.tsx", "src/**/*.ts"
 - Use local state for UI-only state
 - Use context for theme/auth/global UI state
 - Use Redux for complex server state
+
+
+## Layout and Styling
+- Use Flexbox for component layouts
+- Avoid using absolute positioning or floats for layout purposes
+- Prefer CSS-in-JS or utility classes over inline styles

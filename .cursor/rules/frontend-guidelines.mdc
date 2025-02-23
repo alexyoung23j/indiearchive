@@ -1,0 +1,10 @@
+---
+description: Guidelines for frontend development
+globs: "src/**/*.tsx", "src/**/*.ts"
+---
+# Frontend Development Guidelines
+
+## Component Structure
+- All components must be functional components using hooks
+- Class components are deprecated and should be migrated
+- Use custom hooks to handle complex state and side effects

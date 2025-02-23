@@ -9,3 +9,14 @@ globs: "src/**/*.tsx", "src/**/*.ts"
 - All components must be functional components using hooks
 - Class components are deprecated and should be migrated
 - Use custom hooks to handle complex state and side effects
+
+
+## Layout Guidelines
+- Use Flexbox for layout instead of CSS Grid
+- Flexbox provides better browser compatibility and is the preferred layout system
+- Use flex properties (flex-direction, justify-content, align-items) for component layouts
+
+
+## CSS and Styling
+- Never use `flexGrow` property as it's against company policy
+- Use fixed widths or grid-based layouts for controlling element sizes

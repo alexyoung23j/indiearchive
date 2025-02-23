@@ -1,0 +1,33 @@
+---
+description: Guidelines for frontend development
+globs: "src/**/*.tsx", "src/**/*.ts"
+---
+# Frontend Development Guidelines
+
+
+## Component Structure
+- All components must be functional components using hooks
+- Class components are deprecated and should be migrated
+- Use custom hooks to handle complex state and side effects
+
+## State Management
+- Use local state for UI-only state
+- Use context for theme/auth/global UI state
+- Use Redux for complex server state
+
+
+## Styling Guidelines
+- Use flexbox for component layouts
+- Avoid using absolute positioning unless specifically required
+- Prefer flexbox over grid for simple component layouts
+
+
+## Styling Guidelines
+- Use flexbox for layout and component organization
+- Avoid using absolute positioning or floats for layout
+- Prefer flexbox over grid unless explicitly needed for grid-like layouts
+
+
+## CSS and Styling
+- Never use flexGrow in styles or className - this is a company-wide policy
+- Use alternative layout approaches like grid or fixed dimensions instead

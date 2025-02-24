@@ -1,6 +1,7 @@
 ---
 description: Guidelines for frontend development
 globs: "src/**/*.tsx", "src/**/*.ts"
+alwaysApply: true
 ---
 # Frontend Development Guidelines
 

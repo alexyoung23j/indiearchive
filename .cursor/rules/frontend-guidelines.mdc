@@ -8,3 +8,15 @@ globs: "src/**/*.tsx", "src/**/*.ts"
 - All components must be functional components using hooks
 - Class components are deprecated and should be migrated
 - Use custom hooks to handle complex state and side effects
+
+## Layout Guidelines
+- Always use flexbox for layouts
+- Grid layouts are not permitted per company policy
+- Use flex properties (flex-direction, justify-content, align-items) for component layouts
+
+
+## Styling Guidelines
+- Always use Tailwind classes for styling instead of inline styles or pixel values
+- Use Tailwind's default sizing scale for consistent spacing and dimensions
+- Avoid hardcoding dimensions with explicit pixel values
+- For colors, use Tailwind's color palette instead of hex values

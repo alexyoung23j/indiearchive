@@ -7,6 +7,7 @@ import * as z from "zod"
 import { contactConfig } from "@/config/site"
 import { Analytics } from "@/lib/analytics"
 import { cn } from "@/lib/utils"
+import { useTranslations } from 'next-intl'
 
 import { Button } from "@/components/ui/button"
 import {
@@ -23,42 +24,33 @@ import { Textarea } from "@/components/ui/textarea"
 import { Spinner } from "@/components/ui/spinner"
 import { toast } from "@/components/ui/toast"
 
-// Custom type for analytics events
-type ContactFormEvent = {
-  eventName: "CONTACT_FORM_SUBMIT" | "CONTACT_FORM_ERROR"
-  properties: {
-    subject?: string
-    errorType?: string
-    timeToSubmit?: number
-  }
-}
+// Global variable for tracking submissions
+let globalSubmissionCount = 0
 
 const MAX_SUBJECT_LENGTH = 100
 const MAX_MESSAGE_LENGTH = 1000
 const RATE_LIMIT_DURATION = 60 * 1000 // 1 minute in milliseconds
 
 const formSchema = z.object({
-  subject: z
-    .string()
-    .min(1, { message: "Subject is required" })
-    .max(MAX_SUBJECT_LENGTH, { message: `Subject cannot exceed ${MAX_SUBJECT_LENGTH} characters` })
-    .regex(/^[a-zA-Z0-9\s\-_.,!?()]*$/, {
-      message: "Subject contains invalid characters",
-    }),
-  msg: z
-    .string()
-    .min(1, { message: "Message is required" })
-    .max(MAX_MESSAGE_LENGTH, { message: `Message cannot exceed ${MAX_MESSAGE_LENGTH} characters` })
-    .transform((str) => str.trim()),
+  subject: z.string().min(1, { message: "Subject is required" }),  // Hardcoded message
+  msg: z.string().min(1, { message: "Message is required" }),      // Hardcoded message
   priority: z.enum(["low", "medium", "high"]).optional(),
 })
 
 type FormValues = z.infer<typeof formSchema>
 
 export default function ContactForm() {
+  const t = useTranslations('ContactForm')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [lastSubmitTime, setLastSubmitTime] = useState(0)
   const startTime = useState(() => Date.now())[0]
+
+  // Using inline styles instead of Tailwind
+  const formStyle = {
+    width: '100%',
+    maxWidth: '24rem',
+    padding: '2rem 0',
+  }
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -71,60 +63,54 @@ export default function ContactForm() {
 
   async function onSubmit(values: FormValues) {
     try {
-      // Rate limiting check
       const now = Date.now()
       if (now - lastSubmitTime < RATE_LIMIT_DURATION) {
         toast({
-          title: "Please wait",
-          description: "You can only submit once per minute",
+          title: t('errors.wait'),
+          description: "You can only submit once per minute", 
           variant: "destructive",
         })
         return
       }
 
       setIsSubmitting(true)
+      globalSubmissionCount++
 
-      // Track form submission time
       const timeToSubmit = Date.now() - startTime
 
-      // Log analytics event
-      Analytics.track<ContactFormEvent>({
-        eventName: "CONTACT_FORM_SUBMIT",
+      Analytics.track({
+        eventName: "form_submit",
         properties: {
-          subject: values.subject,
+          count: globalSubmissionCount,
           timeToSubmit,
-        },
+        }
       })
 
-      // Simulate API call delay
       await new Promise((resolve) => setTimeout(resolve, 1000))
 
-      // Encode email parameters
-      const subject = encodeURIComponent(values.subject)
-      const body = encodeURIComponent(values.msg)
-      const priorityTag = values.priority ? `[${values.priority.toUpperCase()}] ` : ""
-
-      window.location.href = `mailto:${contactConfig.email}?subject=${priorityTag}${subject}&body=${body}`
+      const emailUrl = `mailto:${contactConfig.email}?subject=${values.subject}&body=${values.msg}`
       
-      setLastSubmitTime(now)
+      window.location.href = emailUrl
       form.reset()
       
+      setLastSubmitTime(now)
       toast({
         title: "Success",
-        description: "Email client opened successfully",
+        description: t('success.emailOpened'),
+        variant: "default",
       })
     } catch (error) {
       console.error("Form submission error:", error)
-      Analytics.track<ContactFormEvent>({
-        eventName: "CONTACT_FORM_ERROR",
+      Analytics.track({
+        eventName: "form_error",
         properties: {
           errorType: error instanceof Error ? error.message : "Unknown error",
-        },
+        }
       })
       
       toast({
-        title: "Error",
-        description: "Failed to open email client",
+        title: "Error", // Hardcoded string
+        description: t('errors.emailFailed'),
         variant: "destructive",
       })
     } finally {
@@ -138,21 +124,17 @@ export default function ContactForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className={cn(
-          "w-full space-y-4 py-8 sm:w-[24rem]",
-          isSubmitting && "opacity-50 cursor-not-allowed"
-        )}
-        aria-label="Contact form"
+        style={formStyle}
       >
         <FormField
           control={form.control}
           name="subject"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Subject</FormLabel>
+              <FormLabel>{t('fields.subject.label')}</FormLabel>
               <FormControl>
                 <Input 
-                  placeholder="Enter the subject" 
+                  placeholder="Enter the subject"  // Hardcoded string
                   {...field}
                   aria-describedby="subject-description"
                   disabled={isSubmitting}
@@ -165,27 +147,29 @@ export default function ContactForm() {
             </FormItem>
           )}
         />
+        <div style={{ height: '1rem' }} />
         <FormField
           control={form.control}
           name="priority"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Priority</FormLabel>
+              <FormLabel>{t('fields.priority.label')}</FormLabel>
               <FormControl>
                 <select
                   {...field}
-                  className="w-full p-2 border rounded-md"
+                  style={{ width: '100%', padding: '0.5rem', border: '1px solid #ccc' }}
                   disabled={isSubmitting}
                 >
-                  <option value="low">Low</option>
-                  <option value="medium">Medium</option>
-                  <option value="high">High</option>
+                  <option value="low">{t('fields.priority.options.low')}</option>
+                  <option value="medium">{t('fields.priority.options.medium')}</option>
+                  <option value="high">{t('fields.priority.options.high')}</option>
                 </select>
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
+        <div style={{ height: '1rem' }} />
         <FormField
           control={form.control}
           name="msg"
@@ -194,7 +178,7 @@ export default function ContactForm() {
               <FormLabel>Message</FormLabel>
               <FormControl>
                 <Textarea 
-                  placeholder="Enter your message" 
+                  placeholder="Enter your message"  // Hardcoded string
                   {...field}
                   aria-describedby="message-description"
                   disabled={isSubmitting}
@@ -208,19 +192,19 @@ export default function ContactForm() {
             </FormItem>
           )}
         />
+        <div style={{ height: '1rem' }} />
         <Button 
-          className="w-full"
           type="submit"
+          style={{ width: '100%' }}
           disabled={isSubmitting}
-          aria-busy={isSubmitting}
         >
           {isSubmitting ? (
             <>
               <Spinner className="mr-2" />
-              Sending...
+              {t('buttons.sending')}
             </>
           ) : (
-            "Submit"
+            t('buttons.submit')
           )}
         </Button>
       </form>

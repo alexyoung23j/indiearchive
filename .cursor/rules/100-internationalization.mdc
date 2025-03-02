@@ -1,0 +1,9 @@
+---
+description: Standards for internationalization and localization
+globs: **/*.tsx, **/*.jsx, **/*.ts, **/*.js
+---
+
+# Internationalization Standards
+
+- All user-facing strings must use the useTranslation() hook (t function)
+- This includes toast messages and form validation messages

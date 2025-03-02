@@ -44,6 +44,7 @@ export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [lastSubmitTime, setLastSubmitTime] = useState(0)
   const startTime = useState(() => Date.now())[0]
+  
 
   // Using inline styles instead of Tailwind
   const formStyle = {

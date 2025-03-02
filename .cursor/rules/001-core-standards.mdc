@@ -1,0 +1,15 @@
+---
+description: Core standards for code style and patterns
+globs: "**/*.tsx", "**/*.jsx", "**/*.css"
+alwaysApply: false
+---
+
+# CSS Layout Standards
+
+This repository uses specific layout approaches for consistency.
+
+- Always use Flexbox for layouts, never use CSS Grid
+- Prefer Tailwind classes over inline styles when possible
+- For component layouts, use flex-based approaches with appropriate flex properties
+
+

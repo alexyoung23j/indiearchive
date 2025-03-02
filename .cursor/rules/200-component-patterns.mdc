@@ -1,0 +1,9 @@
+---
+description: Standards for component implementation and usage
+globs: "**/*.tsx", "**/*.jsx"
+---
+
+# Card Component Standards
+
+- Use Card components generated in the `CustomCards` repo instead of importing directly
+- All cards should be generated using the CustomCards approach
